@@ -1,0 +1,16 @@
+{
+  "name": "event-bar",
+  "version": "1.0.0",
+  "description": "GNOME Shell extension: indicators that drop from the top-center on an event, then slide away.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@stylistic/eslint-plugin": "^2.0.0",
+    "eslint": "^9.0.0"
+  }
+}

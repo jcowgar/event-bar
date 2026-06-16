@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.event-bar"
+          path="/org/gnome/shell/extensions/event-bar/">
+
+    <!-- CPU -->
+    <key name="cpu-enabled" type="b">
+      <default>true</default>
+      <summary>Show CPU indicator</summary>
+    </key>
+    <key name="cpu-poll-seconds" type="i">
+      <range min="1" max="60"/>
+      <default>2</default>
+      <summary>CPU poll interval (seconds)</summary>
+    </key>
+    <key name="cpu-threshold" type="i">
+      <range min="1" max="100"/>
+      <default>75</default>
+      <summary>Show the CPU pill above this usage %</summary>
+    </key>
+    <key name="cpu-click-command" type="s">
+      <default>''</default>
+      <summary>Command run when the CPU pill is clicked (empty = not clickable)</summary>
+    </key>
+
+    <!-- Memory -->
+    <key name="mem-enabled" type="b">
+      <default>true</default>
+      <summary>Show memory indicator</summary>
+    </key>
+    <key name="mem-poll-seconds" type="i">
+      <range min="1" max="120"/>
+      <default>5</default>
+      <summary>Memory poll interval (seconds)</summary>
+    </key>
+    <key name="mem-threshold" type="i">
+      <range min="1" max="100"/>
+      <default>80</default>
+      <summary>Show the memory pill above this usage %</summary>
+    </key>
+    <key name="mem-click-command" type="s">
+      <default>''</default>
+      <summary>Command run when the memory pill is clicked (empty = not clickable)</summary>
+    </key>
+
+    <!-- Disk -->
+    <key name="disk-enabled" type="b">
+      <default>true</default>
+      <summary>Show disk indicator</summary>
+    </key>
+    <key name="disk-poll-seconds" type="i">
+      <range min="5" max="3600"/>
+      <default>60</default>
+      <summary>Disk poll interval (seconds)</summary>
+    </key>
+    <key name="disk-threshold" type="i">
+      <range min="1" max="100"/>
+      <default>90</default>
+      <summary>Show the disk pill above this used %</summary>
+    </key>
+    <key name="disk-path" type="s">
+      <default>'/'</default>
+      <summary>Filesystem path the disk pill watches</summary>
+    </key>
+    <key name="disk-click-command" type="s">
+      <default>''</default>
+      <summary>Command run when the disk pill is clicked (empty = not clickable)</summary>
+    </key>
+
+    <!-- Volume -->
+    <key name="volume-enabled" type="b">
+      <default>true</default>
+      <summary>Show volume indicator</summary>
+    </key>
+    <key name="volume-linger-ms" type="i">
+      <range min="200" max="10000"/>
+      <default>1500</default>
+      <summary>How long the volume pill stays (ms)</summary>
+    </key>
+
+    <!-- Network -->
+    <key name="wifi-enabled" type="b">
+      <default>true</default>
+      <summary>Show network indicator</summary>
+    </key>
+    <key name="wifi-linger-ms" type="i">
+      <range min="200" max="10000"/>
+      <default>2500</default>
+      <summary>How long the network pill stays (ms)</summary>
+    </key>
+
+    <!-- Workspace -->
+    <key name="workspace-enabled" type="b">
+      <default>true</default>
+      <summary>Show workspace indicator</summary>
+    </key>
+    <key name="workspace-linger-ms" type="i">
+      <range min="200" max="10000"/>
+      <default>1200</default>
+      <summary>How long the workspace pill stays (ms)</summary>
+    </key>
+    <key name="workspace-disable-popup" type="b">
+      <default>false</default>
+      <summary>Suppress GNOME's built-in workspace switcher popup</summary>
+    </key>
+
+    <!-- Clock -->
+    <key name="clock-enabled" type="b">
+      <default>true</default>
+      <summary>Show clock indicator</summary>
+    </key>
+    <key name="clock-interval-seconds" type="i">
+      <range min="60" max="3600"/>
+      <default>300</default>
+      <summary>How often the clock drops (seconds, divides 60 min)</summary>
+    </key>
+    <key name="clock-linger-ms" type="i">
+      <range min="500" max="60000"/>
+      <default>10000</default>
+      <summary>How long the clock pill stays (ms)</summary>
+    </key>
+    <key name="clock-format" type="s">
+      <default>'%H:%M'</default>
+      <summary>Clock format (strftime)</summary>
+    </key>
+
+    <!-- Brightness -->
+    <key name="brightness-enabled" type="b">
+      <default>true</default>
+      <summary>Show brightness indicator</summary>
+    </key>
+    <key name="brightness-linger-ms" type="i">
+      <range min="200" max="10000"/>
+      <default>1500</default>
+      <summary>How long the brightness pill stays (ms)</summary>
+    </key>
+
+    <!-- Battery -->
+    <key name="battery-enabled" type="b">
+      <default>true</default>
+      <summary>Show battery indicator</summary>
+    </key>
+    <key name="battery-linger-ms" type="i">
+      <range min="200" max="10000"/>
+      <default>2500</default>
+      <summary>How long the battery plug/unplug pill stays (ms)</summary>
+    </key>
+    <key name="battery-low" type="i">
+      <range min="1" max="100"/>
+      <default>20</default>
+      <summary>Battery % considered low</summary>
+    </key>
+    <key name="battery-critical" type="i">
+      <range min="1" max="100"/>
+      <default>10</default>
+      <summary>Battery % considered critical (red)</summary>
+    </key>
+
+    <!-- Microphone -->
+    <key name="mic-enabled" type="b">
+      <default>true</default>
+      <summary>Show microphone-in-use indicator</summary>
+    </key>
+
+    <!-- Animation -->
+    <key name="slide-ms" type="i">
+      <range min="0" max="2000"/>
+      <default>250</default>
+      <summary>Pill slide animation duration (ms)</summary>
+    </key>
+    <key name="pill-travel" type="i">
+      <range min="0" max="400"/>
+      <default>64</default>
+      <summary>Distance a pill travels from the top edge (px)</summary>
+    </key>
+
+    <!-- Theme (every key empty/0 means "inherit GNOME's themed OSD look") -->
+    <key name="pill-bg-color" type="s">
+      <default>''</default>
+      <summary>Pill background color (empty = theme default)</summary>
+    </key>
+    <key name="pill-text-color" type="s">
+      <default>''</default>
+      <summary>Pill text color (empty = theme default)</summary>
+    </key>
+    <key name="pill-border-color" type="s">
+      <default>''</default>
+      <summary>Pill border color (empty = theme default)</summary>
+    </key>
+    <key name="alert-bg-color" type="s">
+      <default>''</default>
+      <summary>Alert-pill background color (empty = built-in red)</summary>
+    </key>
+    <key name="pill-border-radius" type="i">
+      <range min="0" max="32"/>
+      <default>0</default>
+      <summary>Pill corner radius (px); 0 = theme default (capsule)</summary>
+    </key>
+    <key name="pill-font-size" type="i">
+      <range min="0" max="32"/>
+      <default>0</default>
+      <summary>Pill font size (px); 0 = theme default</summary>
+    </key>
+    <key name="pill-font-weight" type="i">
+      <range min="0" max="900"/>
+      <default>0</default>
+      <summary>Pill font weight (100-900); 0 = theme default</summary>
+    </key>
+
+    <!-- Panel -->
+    <key name="hide-panel" type="b">
+      <default>true</default>
+      <summary>Hide the top panel and reclaim its space</summary>
+    </key>
+    <key name="panel-watch-ms" type="i">
+      <range min="50" max="2000"/>
+      <default>300</default>
+      <summary>Pointer-poll cadence while the panel is revealed (ms)</summary>
+    </key>
+    <key name="panel-hover-trigger-px" type="i">
+      <range min="1" max="20"/>
+      <default>1</default>
+      <summary>Height of the top-edge reveal strip (px)</summary>
+    </key>
+
+  </schema>
+</schemalist>

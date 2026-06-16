@@ -1,0 +1,196 @@
+# Event Bar - translation template.
+# Copyright (C) 2026 Jeremy Cowgar
+# This file is distributed under the same license as the Event Bar package.
+# Regenerate with: see "Translations" in DEVELOPER.md.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Event Bar\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-16 16:41-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: eventbar.js:223
+msgid "CPU %d%"
+msgstr ""
+
+#: eventbar.js:253
+msgid "MEM %d%"
+msgstr ""
+
+#: eventbar.js:280
+msgid "DISK %d%"
+msgstr ""
+
+#: eventbar.js:327
+msgid "VOL muted"
+msgstr ""
+
+#: eventbar.js:332
+msgid "VOL %d%"
+msgstr ""
+
+#: eventbar.js:389
+msgid "No network"
+msgstr ""
+
+#: eventbar.js:394
+#, javascript-format
+msgid "WiFi %s"
+msgstr ""
+
+#: eventbar.js:394
+#, javascript-format
+msgid "NET %s"
+msgstr ""
+
+#: eventbar.js:432
+#, javascript-format
+msgid "Workspace %d"
+msgstr ""
+
+#: eventbar.js:456
+#, javascript-format
+msgid "⚠ Workspace %s"
+msgstr ""
+
+#: eventbar.js:536
+msgid "BRT %d%"
+msgstr ""
+
+#: eventbar.js:576
+msgid "AC %d%"
+msgstr ""
+
+#: eventbar.js:576 eventbar.js:582
+msgid "BAT %d%"
+msgstr ""
+
+#: eventbar.js:615
+msgid "MIC ●"
+msgstr ""
+
+#: prefs.js:21
+msgid "Indicators"
+msgstr ""
+
+#: prefs.js:27
+msgid "CPU"
+msgstr ""
+
+#: prefs.js:28 prefs.js:34 prefs.js:40 prefs.js:48 prefs.js:53 prefs.js:58
+#: prefs.js:63 prefs.js:70 prefs.js:75 prefs.js:82
+msgid "Enabled"
+msgstr ""
+
+#: prefs.js:29 prefs.js:35
+msgid "Threshold (%)"
+msgstr ""
+
+#: prefs.js:30 prefs.js:36 prefs.js:43
+msgid "Poll interval (s)"
+msgstr ""
+
+#: prefs.js:33
+msgid "Memory"
+msgstr ""
+
+#: prefs.js:39
+msgid "Disk"
+msgstr ""
+
+#: prefs.js:41
+msgid "Path to watch"
+msgstr ""
+
+#: prefs.js:42
+#, javascript-format
+msgid "Threshold (% full)"
+msgstr ""
+
+#: prefs.js:47
+msgid "Volume"
+msgstr ""
+
+#: prefs.js:49 prefs.js:54 prefs.js:59 prefs.js:66 prefs.js:71 prefs.js:78
+msgid "Linger (ms)"
+msgstr ""
+
+#: prefs.js:52
+msgid "Network"
+msgstr ""
+
+#: prefs.js:57
+msgid "Workspace"
+msgstr ""
+
+#: prefs.js:62
+msgid "Clock"
+msgstr ""
+
+#: prefs.js:64
+msgid "Format (strftime)"
+msgstr ""
+
+#: prefs.js:65
+msgid "Interval (s)"
+msgstr ""
+
+#: prefs.js:69
+msgid "Brightness"
+msgstr ""
+
+#: prefs.js:74
+msgid "Battery"
+msgstr ""
+
+#: prefs.js:76
+msgid "Low (%)"
+msgstr ""
+
+#: prefs.js:77
+msgid "Critical (%)"
+msgstr ""
+
+#: prefs.js:81
+msgid "Microphone"
+msgstr ""
+
+#: prefs.js:87
+msgid "Appearance"
+msgstr ""
+
+#: prefs.js:92
+msgid "Animation"
+msgstr ""
+
+#: prefs.js:93
+msgid "Slide duration (ms)"
+msgstr ""
+
+#: prefs.js:94
+msgid "Travel distance (px)"
+msgstr ""
+
+#: prefs.js:97
+msgid "Top panel"
+msgstr ""
+
+#: prefs.js:98
+msgid "Hide the top panel"
+msgstr ""
+
+#: prefs.js:99
+msgid "Reveal-strip height (px)"
+msgstr ""
+
+#: prefs.js:100
+msgid "Pointer poll while revealed (ms)"
+msgstr ""

@@ -1,0 +1,11 @@
+{
+  "uuid": "event-bar@cowgar.com",
+  "name": "Event Bar",
+  "description": "A status bar that stays hidden. Indicators drop down from the top-center only when something needs attention (e.g. high CPU), then disappear. Multiple events stack side-by-side.",
+  "shell-version": ["50"],
+  "url": "https://github.com/jcowgar/event-bar",
+  "settings-schema": "org.gnome.shell.extensions.event-bar",
+  "gettext-domain": "event-bar@cowgar.com",
+  "version": 1,
+  "version-name": "1.0"
+}

@@ -1,0 +1,31 @@
+.event-bar-container {
+    spacing: 8px;
+    padding: 0 8px;
+}
+
+/*
+ * The pill carries the shell's own `osd-window` style class (added in
+ * eventbar.js) so by default it inherits GNOME's themed popup surface —
+ * background, text color, border, and capsule radius — and tracks the active
+ * light / dark / high-contrast variant automatically. Here we only strip the
+ * layout baggage that class brings for the big centered volume popup and apply
+ * our own compact, top-anchored geometry. Any color/shape/font the user sets in
+ * preferences is applied inline in eventbar.js and overrides everything here.
+ */
+.event-bar-pill {
+    margin-bottom: 0;                   /* osd-window lifts itself 4em off-screen */
+    padding: 6px 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+
+/* Alert state: red by default on every theme. Overridden inline when the user
+   sets an alert background color in preferences. */
+.event-bar-pill-alert {
+    background-color: rgba(150, 30, 30, 0.9);
+    border-color: rgba(255, 120, 120, 0.4);
+    color: #ffffff;
+}
+
+.event-bar-pill-label {
+    letter-spacing: 0.3px;
+}

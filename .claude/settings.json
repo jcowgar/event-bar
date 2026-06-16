@@ -1,0 +1,20 @@
+{
+  "includeCoAuthoredBy": false,
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd=$(jq -r '.tool_input.command' 2>/dev/null); if echo \"$cmd\" | grep -qE '(^|[;&|]|&&|\\|\\|)[[:space:]]*(just (test|typecheck|lint|check)|cargo (test|clippy)|(pnpm|npm|yarn) test)' && ! echo \"$cmd\" | grep -qE '\\| *tee '; then mkdir -p /tmp/kemora-validation; echo 'BLOCK: Test/validation runs are slow — pipe through tee so you can grep the log later instead of re-running. Retry as:  <command> 2>&1 | tee /tmp/kemora-validation/<name>.log  then grep that file for what you need.' >&2; exit 2; fi"
+          }
+        ]
+      }
+    ]
+  }
+}
