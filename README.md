@@ -111,7 +111,9 @@ value, no reload needed. The preferences window has two pages:
   | Battery **Low** / **Critical** | `20` / `10` | low / critical battery % |
   | Workspace **Disable GNOME workspace popup** | off | suppress GNOME's built-in switcher popup (the dots) so only our pill shows |
 
-- **Appearance** — slide animation duration and pill travel distance; a
+- **Appearance** — an **Anchor** section to choose which screen edge pills drop
+  from (**Top** or **Bottom**) and how they align across it (**Left**,
+  **Center**, or **Right**); slide animation duration and pill travel distance; a
   **Theme** section for the pill's colors, shape, and font; plus the
   hidden-top-panel behavior (**Hide the top panel**, reveal-strip height, and the
   pointer-poll cadence while it's revealed).

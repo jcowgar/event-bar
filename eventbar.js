@@ -118,7 +118,13 @@ class SlotManager {
     constructor(settings) {
         this._slots = new Map(); // key -> { pill, label, timer, enterId }
         this._slideMs = settings.get_int('slide-ms');
-        this._pillTravel = settings.get_int('pill-travel');
+        this._anchorV = settings.get_string('anchor-vertical');     // top | bottom
+        this._anchorH = settings.get_string('anchor-horizontal');   // left | center | right
+        // Pills slide from the anchored edge: down from the top, up from the
+        // bottom. The signed travel distance carries that direction into both
+        // the hidden start offset and the slide-out target.
+        const travel = settings.get_int('pill-travel');
+        this._pillTravel = this._anchorV === 'bottom' ? travel : -travel;
         this._conn = new Connections();
         this._unredirect = new UnredirectGuard();
 
@@ -141,6 +147,9 @@ class SlotManager {
 
         this._reposition();
         this._conn.connect(this._container, 'notify::width', () => this._reposition());
+        // The bottom anchor pins the container's lower edge, so its Y shifts as
+        // the stack grows and shrinks — re-anchor on height changes too.
+        this._conn.connect(this._container, 'notify::height', () => this._reposition());
         this._conn.connect(Main.layoutManager, 'monitors-changed', () => this._reposition());
     }
 
@@ -149,10 +158,17 @@ class SlotManager {
         if (!mon)
             return;
         const w = this._container.width;
-        this._container.set_position(
-            Math.round(mon.x + (mon.width - w) / 2),
-            mon.y,
-        );
+        let x;
+        if (this._anchorH === 'left')
+            x = mon.x;
+        else if (this._anchorH === 'right')
+            x = mon.x + mon.width - w;
+        else
+            x = mon.x + (mon.width - w) / 2;
+        const y = this._anchorV === 'bottom'
+            ? mon.y + mon.height - this._container.height
+            : mon.y;
+        this._container.set_position(Math.round(x), Math.round(y));
     }
 
     /**
@@ -170,8 +186,13 @@ class SlotManager {
         if (border)
             rules.push(`border-color: ${border};`);
         const radius = s.get_int('pill-border-radius');
-        if (radius > 0) // squared top edge, rounded below — matches the classic look
-            rules.push(`border-radius: 0 0 ${radius}px ${radius}px;`);
+        if (radius > 0) {
+            // Square the anchored edge, round the free one, so the pill reads as
+            // attached to the screen edge it drops from (top vs bottom).
+            rules.push(this._anchorV === 'bottom'
+                ? `border-radius: ${radius}px ${radius}px 0 0;`
+                : `border-radius: 0 0 ${radius}px ${radius}px;`);
+        }
         return rules.join(' ');
     }
 
@@ -218,7 +239,7 @@ class SlotManager {
                 style_class: 'event-bar-pill osd-window',
                 child: label,
                 opacity: 0,
-                translation_y: -this._pillTravel,
+                translation_y: this._pillTravel,
             });
             this._container.add_child(pill);
             slot = {pill, label, timer: 0, enterId: 0};
@@ -275,7 +296,7 @@ class SlotManager {
         this._clearPending(slot);
         slot.pill.ease({
             opacity: 0,
-            translation_y: -this._pillTravel,
+            translation_y: this._pillTravel,
             duration: this._slideMs,
             mode: Clutter.AnimationMode.EASE_IN_QUAD,
             onComplete: () => {

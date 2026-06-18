@@ -107,8 +107,10 @@ start. `_build()` skips any source whose `<source>-enabled` key is false.
 
 ### `SlotManager`
 
-Owns a single top-center `St.BoxLayout` added via
-`Main.layoutManager.addTopChrome`. Sources interact with it through:
+Owns a single `St.BoxLayout` added via `Main.layoutManager.addTopChrome`,
+positioned against a configurable screen edge (`anchor-vertical` = top/bottom,
+`anchor-horizontal` = left/center/right — defaults `top`/`center`). Sources
+interact with it through:
 
 ```js
 slots.show(key, text, { lingerMs, alert });  // create/update a named pill
@@ -122,8 +124,14 @@ slots.hide(key);                             // animate out + remove
   brightness, battery).
 - `alert: true` adds the `event-bar-pill-alert` CSS class (red).
 
-Pills animate in/out with `actor.ease()` (translation + opacity). The container
-re-centers itself on `notify::width` and `monitors-changed`.
+Pills animate in/out with `actor.ease()` (translation + opacity). They slide
+from the anchored edge — down from the top, up from the bottom — so `pill-travel`
+is stored signed (negative for a top anchor) and reused for both the hidden start
+offset and the slide-out target. The container re-anchors itself on
+`notify::width`, `notify::height` (the bottom anchor pins the lower edge, so its
+Y shifts as the stack grows), and `monitors-changed`. With a non-zero
+`pill-border-radius`, the rounded corners sit on the *free* edge (away from the
+screen) so the pill reads as attached.
 
 **Theming.** Each pill carries the shell's own `osd-window` class, so by default
 it inherits GNOME's themed popup surface and tracks the active

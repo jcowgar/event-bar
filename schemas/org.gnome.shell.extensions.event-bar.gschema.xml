@@ -162,6 +162,25 @@
       <summary>Show microphone-in-use indicator</summary>
     </key>
 
+    <!-- Anchor: which screen edge pills drop from, and their alignment -->
+    <key name="anchor-vertical" type="s">
+      <choices>
+        <choice value="top"/>
+        <choice value="bottom"/>
+      </choices>
+      <default>'top'</default>
+      <summary>Screen edge pills anchor to (top or bottom)</summary>
+    </key>
+    <key name="anchor-horizontal" type="s">
+      <choices>
+        <choice value="left"/>
+        <choice value="center"/>
+        <choice value="right"/>
+      </choices>
+      <default>'center'</default>
+      <summary>Horizontal alignment of pills (left, center, or right)</summary>
+    </key>
+
     <!-- Animation -->
     <key name="slide-ms" type="i">
       <range min="0" max="2000"/>

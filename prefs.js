@@ -95,6 +95,18 @@ export default class EventBarPreferences extends ExtensionPreferences {
         });
         window.add(appearance);
 
+        appearance.add(this._group(settings, _('Anchor'), [
+            this._combo('anchor-vertical', _('Vertical edge'), [
+                ['top', _('Top')],
+                ['bottom', _('Bottom')],
+            ]),
+            this._combo('anchor-horizontal', _('Horizontal alignment'), [
+                ['left', _('Left')],
+                ['center', _('Center')],
+                ['right', _('Right')],
+            ]),
+        ]));
+
         appearance.add(this._group(settings, _('Animation'), [
             this._spin('slide-ms', _('Slide duration (ms)'), 0, 2000, 10),
             this._spin('pill-travel', _('Travel distance (px)'), 0, 400, 1),
@@ -144,6 +156,41 @@ export default class EventBarPreferences extends ExtensionPreferences {
                 }),
             });
             settings.bind(key, row, 'value', Gio.SettingsBindFlags.DEFAULT);
+            return row;
+        };
+    }
+
+    /**
+     * Drop-down row mapping a string-valued key to a fixed list of
+     * `[value, label]` choices. `Adw.ComboRow.selected` is an index, so we sync
+     * it to the key's string both ways manually (guarded against the feedback
+     * loop), the same pattern the color row uses.
+     */
+    _combo(key, title, choices) {
+        return (settings) => {
+            const labels = choices.map(([, label]) => label);
+            const values = choices.map(([value]) => value);
+            const row = new Adw.ComboRow({
+                title,
+                model: new Gtk.StringList({strings: labels}),
+            });
+
+            let syncing = false;
+            const pull = () => {
+                syncing = true;
+                const idx = values.indexOf(settings.get_string(key));
+                row.selected = idx >= 0 ? idx : 0;
+                syncing = false;
+            };
+
+            row.connect('notify::selected', () => {
+                if (!syncing)
+                    settings.set_string(key, values[row.selected]);
+            });
+            const id = settings.connect(`changed::${key}`, () => pull());
+            row.connect('destroy', () => settings.disconnect(id));
+            pull();
+
             return row;
         };
     }
